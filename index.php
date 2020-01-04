@@ -1,11 +1,20 @@
 <?php
-require_once 'model/user_dao.php';
-require_once 'model/user.php';
-require_once 'model/login.php';
-
-$usuario = new User('Victor', 'victor@gmail.com', 'VHugo', '111');
-$create = new UserDao();
-// $create->create($usuario);
-login('VHugo', '111');
-
-
+    require_once 'controller/message.php';
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>login</title>
+</head>
+<body>
+    <form action="controller/login.php" method="POST">
+        User: <input type="text" name="user" id="user">
+        Password: <input type="password" name="password" id="password">
+        <button type="submit">LogIn</button>
+        <a href="/view/signup.php">SignUp</a>
+    </form>
+</body>
+</html>

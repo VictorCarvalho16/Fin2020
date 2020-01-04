@@ -17,6 +17,26 @@ class UserDao {
 
         $stmt->execute();
     }
+    public function login($user_name, $password) {
+        $sql = "SELECT id, password From user WHERE user_name ='$user_name'";
+        $stmt = Connection::getConn()->query($sql);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        session_start();
+        if($result) {
+            if(password_verify($password, $result['password'])){
+                echo 'Senha Correta!';
+                $_SESSION['id'] = $result['id'];
+                header("location: ../view/home.php");
+                $_SESSION['message'] =  'Login Efetuado';
+                die;
+            } else {
+                $_SESSION['message'] =  'Senha Incorreta!';
+            }
+        } else {
+            $_SESSION['message'] =  'Usuário Não Encontrado!';
+        }
+        header("location: ../");
+    }
     public function read($id){
         $sql = 'SELECT * FROM user WHERE id = ?';
 
@@ -27,7 +47,7 @@ class UserDao {
         
         return $result = $stmt->fetch(PDO::FETCH_ASSOC);
     }
-    public function update(Produto $p)
+    public function changeData(User $user)
     {
         $sql = 'UPDATE FROM user SET name = ?, email = ?,  WHERE id = ?';
 
@@ -47,7 +67,6 @@ class UserDao {
 
         $stmt->execute();
     }
-
     public function changePassword($id, $password)
     {
         $sql = 'UPDATE FROM user SET password = ?,  WHERE id = ?';
@@ -60,6 +79,4 @@ class UserDao {
 
         $stmt->execute();
     }
-
-
 }
