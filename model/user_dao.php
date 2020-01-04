@@ -1,10 +1,12 @@
 <?php
 require_once 'db_connect.php';
 require_once 'user.php';
-require_once 'password_crypt.php';
-
+require_once 'verify.php';
+// Manipulcao de usuario do BD
 class UserDao {
+    // Insere Usuario na tabela
     public function create(User $user) {
+        verifyUser($user->getUser_name());
         $sql = 'INSERT INTO user (name, email, user_name, password) VALUES (?, ?, ?, ?)';
         $password = passwordCrypt($user->getPassword());
 
@@ -16,7 +18,11 @@ class UserDao {
         $stmt->bindValue(4, $password);
 
         $stmt->execute();
+        session_start();
+        $_SESSION['message'] =  "Cadastro Efetuado";
+        header("location: ../index.php");
     }
+    // Verifica os Dados de login e redireciona para a pagina certa
     public function login($user_name, $password) {
         $sql = "SELECT id, password From user WHERE user_name ='$user_name'";
         $stmt = Connection::getConn()->query($sql);
@@ -26,8 +32,8 @@ class UserDao {
             if(password_verify($password, $result['password'])){
                 echo 'Senha Correta!';
                 $_SESSION['id'] = $result['id'];
-                header("location: ../view/home.php");
                 $_SESSION['message'] =  'Login Efetuado';
+                header("location: ../view/home.php");
                 die;
             } else {
                 $_SESSION['message'] =  'Senha Incorreta!';
@@ -37,6 +43,7 @@ class UserDao {
         }
         header("location: ../");
     }
+    // Le os dados de um usuario 
     public function read($id){
         $sql = 'SELECT * FROM user WHERE id = ?';
 
@@ -45,8 +52,9 @@ class UserDao {
 
         $stmt->execute();
         
-        return $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    // altera informações do usuario
     public function changeData(User $user)
     {
         $sql = 'UPDATE FROM user SET name = ?, email = ?,  WHERE id = ?';
@@ -59,6 +67,7 @@ class UserDao {
 
         $stmt->execute();
     }
+    // deleta usuario
     public function delete($id) {
         $sql = 'DELETE FROM user WHERE id = ?';
 
@@ -67,6 +76,7 @@ class UserDao {
 
         $stmt->execute();
     }
+    // muda a senha de um usuario
     public function changePassword($id, $password)
     {
         $sql = 'UPDATE FROM user SET password = ?,  WHERE id = ?';

@@ -1,5 +1,5 @@
 <?php
-    require_once 'controller/message.php'
+    require_once '../controller/message.php'
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,11 +11,11 @@
 </head>
 <body>
     <form action="../controller/signup.php" method="POST">
-        Name: <input type="text" name="name" id="name">
-        E-Mail: <input type="email" name="email" id="email">
-        User: <input type="text" name="user" id="user">
-        Password: <input type="password" name="password" id="password">
-        Password(Confirm): <input type="password" name="password-confirm" id="password-confirm">
+        <p>Name: <input type="text" name="name" id="name"></p>
+        <p>E-Mail: <input type="email" name="email" id="email"></p>
+        <p>User: <input type="text" name="userName" id="userName"></p>
+        <p>Password: <input type="password" name="password" id="password"></p>
+        <p>Password(Confirm): <input type="password" name="passwordConfirm" id="passwordConfirm"></p>
         <button type="submit">SignUp</button>
         <a href="../">Back</a>
     </form>

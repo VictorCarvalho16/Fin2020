@@ -1,8 +1,8 @@
 <?php
-
+// Objeto Usuario
 class User {
     private $id, $name, $email, $user_name, $password;
-    
+    // Contrutor do Objeto
     function __construct($name, $email, $user_name, $password, $id = '') {
         $this->name = $name;
         $this->email = $email;
@@ -10,7 +10,7 @@ class User {
         $this->password = $password;
         $this->id = $id;
     }
-
+    // funcoes publicas get do objeto
     public function getID() {
         return $this->id;
     }
@@ -26,7 +26,7 @@ class User {
     public function getPassword() {
         return $this->password;
     }
-
+    // funcoes publicas set do objeto
     public function setName($name) {
         $this->name = $name;
     }

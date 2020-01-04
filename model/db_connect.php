@@ -1,5 +1,5 @@
 <?php
-
+// Objeto de conexao com o BD
 class Connection {
     private static $instance;
 
