@@ -16,7 +16,7 @@ function verifyUser($user_name) {
 
     if(!empty($result)){ 
         session_start();
-        $_SESSION['message'] =  "Nome de Usuário já cadastrado!";
+        $_SESSION['message'] =  "Username already registered!";
         header("location: ../view/signup.php");
         die;
     }

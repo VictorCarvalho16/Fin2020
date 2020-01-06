@@ -4,12 +4,12 @@ require_once 'db_connect.php';
 
 class TransactionDao {
     public function create(Transaction $t){
-        $sql = "INSERT INTO ee2AvKRmqU.transaction (description, type, value, classification, date, id_user) VALUES (?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO ee2AvKRmqU.transaction (description, type, price, classification, date, id_user) VALUES (?, ?, ?, ?, ?, ?)";
 
         $stmt = Connection::getConn()->prepare($sql);
         $stmt->bindValue(1, $t->getDescription());
         $stmt->bindValue(2, $t->getType());
-        $stmt->bindValue(3, $t->getValue());
+        $stmt->bindValue(3, $t->getPrice());
         $stmt->bindValue(4, $t->getClassification());
         $stmt->bindValue(5, $t->getDate());
         $stmt->bindValue(6, $t->getId_user());
@@ -17,33 +17,69 @@ class TransactionDao {
         session_start();
         try{
             $stmt->execute();
-            $_SESSION['message'] =  "Cadastro Efetuado";
+            $_SESSION['message'] =  "Registred";
             header("location: ../view/home.php");
         }catch(PDOException $e){
-            $_SESSION['message'] =  "Erro no Cadastro";
-            header("location: ../view/home.php");;
+            $_SESSION['message'] =  "Registration Error";
+            header("location: ../view/home.php");
         }
     }
 
+    public function readList($id_user) {
+        $sql = "SELECT id, description, type, price, classification, date  FROM ee2AvKRmqU.transaction WHERE id_user = ?";
+
+        $stmt = Connection::getConn()->prepare($sql);
+        $stmt->bindValue(1, $id_user);
+
+        $stmt->execute();
+        
+        try{
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }catch(PDOException $e){
+            $_SESSION['message'] =  "Error in Select";
+            header("location: ../view/home.php");
+        }   
+    }
+
+    public function readRow($id) {
+        $sql = "SELECT *  FROM ee2AvKRmqU.transaction WHERE id = ?";
+
+        $stmt = Connection::getConn()->prepare($sql);
+        $stmt->bindValue(1, $id);
+
+        $stmt->execute();
+        
+        try{
+            $stmt->execute();
+            return $stmt->fetch();
+        }catch(PDOException $e){
+            $_SESSION['message'] =  "Error in Select";
+            header("location: ../view/home.php");
+        }
+        
+    }
+
+
     public function update(Transaction $t){
-        $sql = "UPDATE ee2AvKRmqU.transaction SET description = ?, type = ?, value = ?, classification = ?, date ? WHERE id = ?";
+        $sql = "UPDATE ee2AvKRmqU.transaction SET description = ?, type = ?, price = ?, classification = ?, date = ? WHERE id = ?";
 
         $stmt = Connection::getConn()->prepare($sql);
         $stmt->bindValue(1, $t->getDescription());
         $stmt->bindValue(2, $t->getType());
-        $stmt->bindValue(3, $t->getValue());
+        $stmt->bindValue(3, $t->getPrice());
         $stmt->bindValue(4, $t->getClassification());
         $stmt->bindValue(5, $t->getDate());
         $stmt->bindValue(6, $t->getId());
+     
         
         session_start();
         try{
             $stmt->execute();
-            
-            $_SESSION['message'] =  "Atualizado";
+            $_SESSION['message'] =  "Updated";
             header("location: ../view/home.php");
         }catch(PDOException $e){
-            $_SESSION['message'] =  "Erro no Cadastro";
+            $_SESSION['message'] =  "Update Error";
             header("location: ../view/home.php");;
         }
     }
@@ -57,11 +93,11 @@ class TransactionDao {
         session_start();
         try{
             $stmt->execute();
-            $_SESSION['message'] =  "Exclusão Realizada";
-            header("location: ../view/home.php");
+            $_SESSION['message'] =  "$id - Deleted";
+            header("location: http://localhost:8000/view/home.php");
         }catch(PDOException $e){
             echo $e->getMessage();
-            $_SESSION['message'] =  "Erro na Exclusão";
+            $_SESSION['message'] =  "Delete Error";
             header("location: ../view/home.php");
         }
     }       

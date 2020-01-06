@@ -1,12 +1,12 @@
 <?php
 // Objeto Usuario
 class Transaction {
-    public $id, $description, $type, $value, $classification, $date, $id_user;
+    public $id, $description, $type, $price, $classification, $date, $id_user;
     // Contrutor do Objeto
-    function __construct($description, $type, $value, $classification, $date, $id_user, $id = '') {
+    function __construct($description, $type, $price, $classification, $date, $id_user, $id = '') {
         $this->description = $description;
         $this->type = $type;
-        $this->value = $value;
+        $this->price = $price;
         $this->classification = $classification;
         $this->date = $date;
         $this->id_user = $id_user;
@@ -19,8 +19,8 @@ class Transaction {
     public function getType() {
         return $this->type;
     }
-    public function getValue() {
-        return $this->value;
+    public function getPrice() {
+        return $this->price;
     }
     public function getClassification() {
         return $this->classification;

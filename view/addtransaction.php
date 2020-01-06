@@ -13,7 +13,7 @@
             <input type="radio" name="type" value="expense" checked>Expense 
             <input type="radio" name="type" value="recipe">Recipe
         </p>
-        <label>Value: $<input type="number" name="value" id="value" placeholder="100.00" step="0.01"></label>
+        <label>Value: $<input type="number" name="price" id="price" placeholder="100.00" step="0.01"></label>
         <label>Classification: <input type="search" name="classification" id="classification" placeholder="Market"></label>
         <label>Date: <input type="date" name="date" id="date" value='<?php echo date("Y-m-d"); ?>'></label>
         <button type="submit">Add</button>

@@ -3,14 +3,7 @@
     require_once '../controller/verifysession.php';
     require_once '../model/user.php';
     require_once '../model/user_dao.php';
-    
-    $user = new UserDao();
-    $user = $user->read($_SESSION['id']);
-    foreach ($user as $key => $value) {
-        $$key = $value;
-    }
-    $user = new User($name, $email, $user_name, $password, $id);
-    echo "Bem Vindo ".$user->getName();
+    require_once '../controller/user.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +14,18 @@
     <title>Home</title>
 </head>
 <body>
+    <table>
+        <tr>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Value $</th>
+            <th>Classification</th>
+            <th>Date</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <?php require_once '../controller/listtransaction.php';?>
+    </table>
     <a href="addtransaction.php">Add Transaction</a>
     <a href="../controller/logout.php">Logout</a>
 </body>

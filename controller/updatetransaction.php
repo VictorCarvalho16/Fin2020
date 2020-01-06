@@ -10,6 +10,6 @@ $classification = $_POST["classification"];
 $date = $_POST["date"];
 $price = str_replace(',', '.', $price);
 
-$transaction = new Transaction($description, $type, $price, $classification, $date, $_SESSION['id']);
+$transaction = new Transaction($description, $type, $price, $classification, $date, $_SESSION['id'], $_SESSION['id_transaction']);
 $transaction_dao = new TransactionDao();
-$transaction_dao->create($transaction);
+$transaction_dao->update($transaction);

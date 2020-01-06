@@ -19,7 +19,7 @@ class UserDao {
 
         $stmt->execute();
         session_start();
-        $_SESSION['message'] =  "Cadastro Efetuado";
+        $_SESSION['message'] =  "Registered";
         header("location: ../index.php");
     }
     // Verifica os Dados de login e redireciona para a pagina certa
@@ -30,16 +30,15 @@ class UserDao {
         session_start();
         if($result) {
             if(password_verify($password, $result['password'])){
-                echo 'Senha Correta!';
                 $_SESSION['id'] = $result['id'];
-                $_SESSION['message'] =  'Login Efetuado';
+                $_SESSION['message'] =  'Login Done';
                 header("location: ../view/home.php");
                 die;
             } else {
-                $_SESSION['message'] =  'Senha Incorreta!';
+                $_SESSION['message'] =  'Invalid Password';
             }
         } else {
-            $_SESSION['message'] =  'Usuário Não Encontrado!';
+            $_SESSION['message'] =  'Username Not Found';
         }
         header("location: ../");
     }
