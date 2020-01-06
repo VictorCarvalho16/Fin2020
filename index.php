@@ -11,8 +11,8 @@
 </head>
 <body>
     <form action="controller/login.php" method="POST">
-        User: <input type="text" name="user" id="user">
-        Password: <input type="password" name="password" id="password">
+        <label>User: <input type="text" name="user" id="user"></label>
+        <labe>Password: <input type="password" name="password" id="password"></label>
         <button type="submit">LogIn</button>
         <a href="/view/signup.php">SignUp</a>
     </form>

@@ -11,11 +11,11 @@
 </head>
 <body>
     <form action="../controller/signup.php" method="POST">
-        <p>Name: <input type="text" name="name" id="name"></p>
-        <p>E-Mail: <input type="email" name="email" id="email"></p>
-        <p>User: <input type="text" name="userName" id="userName"></p>
-        <p>Password: <input type="password" name="password" id="password"></p>
-        <p>Password(Confirm): <input type="password" name="passwordConfirm" id="passwordConfirm"></p>
+        <label>Name: <input type="text" name="name" id="name"></label>
+        <label>E-Mail: <input type="email" name="email" id="email"></label>
+        <label>User: <input type="text" name="userName" id="userName"></label>
+        <label>Password: <input type="password" name="password" id="password"></label>
+        <label>Password(Confirm): <input type="password" name="passwordConfirm" id="passwordConfirm"></label>
         <button type="submit">SignUp</button>
         <a href="../">Back</a>
     </form>
