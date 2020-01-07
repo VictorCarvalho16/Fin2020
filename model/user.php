@@ -1,14 +1,15 @@
 <?php
 // Objeto Usuario
 class User {
-    private $id, $name, $email, $user_name, $password;
+    private $id, $name, $email, $user_name, $password, $balance_value;
     // Contrutor do Objeto
-    function __construct($name, $email, $user_name, $password, $id = '') {
+    function __construct($name, $email, $user_name, $password, $id = '', $balance_value = 0) {
         $this->name = $name;
         $this->email = $email;
         $this->user_name = $user_name;
         $this->password = $password;
         $this->id = $id;
+        $this->balance_value = $balance_value;
     }
     // funcoes publicas get do objeto
     public function getID() {
@@ -26,6 +27,9 @@ class User {
     public function getPassword() {
         return $this->password;
     }
+    public function getBalance_value() {
+        return $this->balance_value;
+    }
     // funcoes publicas set do objeto
     public function setName($name) {
         $this->name = $name;
@@ -35,5 +39,8 @@ class User {
     }
     public function setPassword($password) {
         $this->name = $password;
+    }
+    public function setBalance_value($balance_value) {
+        $this->name = $balance_value;
     }
 }

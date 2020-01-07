@@ -1,0 +1,17 @@
+body {
+    background-color: rgb(94, 94, 87);
+}
+form {
+    width: 80%;
+    max-width: 1200px;
+    margin:  auto;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+label {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0 8px;
+    justify-content: space-between; 
+}

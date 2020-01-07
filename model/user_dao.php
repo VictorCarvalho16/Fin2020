@@ -27,7 +27,14 @@ class UserDao {
         $sql = "SELECT id, password From user WHERE user_name ='$user_name'";
         $stmt = Connection::getConn()->query($sql);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        session_start();
+        /* define o limitador de cache para 'private' */
+        session_cache_limiter('private');
+        $cache_limiter = session_cache_limiter();
+        /* define o prazo do cache em 30 minutos */
+        session_cache_expire(30);
+        $cache_expire = session_cache_expire();
+        session_start();        
+        
         if($result) {
             if(password_verify($password, $result['password'])){
                 $_SESSION['id'] = $result['id'];
