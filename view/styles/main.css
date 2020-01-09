@@ -105,3 +105,12 @@ footer {
     width:95%;
     margin: 0 auto;
 }
+p.results {
+    margin: 2px;
+}
+p.red {
+    color: red;
+}
+p.green {
+    color: green;
+}

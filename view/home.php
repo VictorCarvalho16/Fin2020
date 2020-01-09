@@ -20,8 +20,8 @@
     <div id="home">
         <?php require_once '../controller/user.php'; ?>
         <form action="/controller/filter.php" id='filter-form'>
-            Start: <input type="date" name="start-date" id="start-date">
-            End: <input type="date" name="end-date" id="end-date">
+            Start: <input type="date" name="start-date" id="start-date" value="<?php echo date("Y-m-01");?>">
+            End: <input type="date" name="end-date" id="end-date" value="<?php echo date("Y-m-d");?>">
             <button type="submit" id='filter'>Filter</button>
         </form>
         <table>
@@ -39,8 +39,15 @@
         <a href="addtransaction.php">Add Transaction</a>
         <a href="../controller/logout.php">Logout</a>
         <?php
-            echo '<br>Recipes: $'.$recipe_balance;
-            echo '<br>Expenses: $'.$expense_balance;
+            echo '<p class="results green">Recipes: $'.number_format($recipe_balance, 2).'</p>';
+            echo '<p class="results red">Expenses: $'.number_format($expense_balance, 2).'</p>';
+            $local_balance = ($recipe_balance - $expense_balance);
+            if ($local_balance > 0) {
+                echo '<p class="results green">Local Balance: $'.number_format($local_balance, 2).'</p>';
+            } else {
+                echo '<p class="results red">Local Balance: $'.number_format($local_balance, 2).'</p>';
+            }
+            
         ?>
     </div>
     <footer>

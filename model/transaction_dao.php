@@ -42,6 +42,25 @@ class TransactionDao {
         }   
     }
 
+    public function readListFilter($id_user, $start_date, $end_date) {
+        $sql = "SELECT id, description, type, price, classification, date  FROM ee2AvKRmqU.transaction WHERE id_user = ? AND date >= ? AND date <= ?";
+
+        $stmt = Connection::getConn()->prepare($sql);
+        $stmt->bindValue(1, $id_user);
+        $stmt->bindValue(2, $start_date);
+        $stmt->bindValue(3, $end_date);
+
+        $stmt->execute();
+        
+        try{
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }catch(PDOException $e){
+            $_SESSION['message'] =  "Error in Select";
+            header("location: ../view/home.php");
+        }   
+    }
+
     public function readRow($id) {
         $sql = "SELECT *  FROM ee2AvKRmqU.transaction WHERE id = ?";
 
