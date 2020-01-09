@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
+    <header>
+        <img src="..\icon.jpg" alt="Icon">
+        <h1>FIN 2020</h1>
+    </header>
     <div id="content">
         <form action="../controller/addtransaction.php" method="post">
             <div class="input"><label><p>Description: </p><input type="text" name="description" id="description" placeholder="Grocery Shopping"></label></div>
@@ -22,5 +26,8 @@
             <a href="home.php">Back</a>
         </form>    
     </div>
+    <footer>
+        <p>Victor Carvalho &copy; <strong>2020</strong></p>
+    </footer>
 </body>
 </html>

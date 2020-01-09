@@ -1,6 +1,3 @@
-<?php
-    require_once '../controller/edittransaction.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,9 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Edit</title>
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="../styles/main.css">
 </head>
 <body>
-<a href="../home.php">Back</a>
+    <header>
+        <img src="..\..\icon.jpg" alt="Icon">
+        <h1>FIN 2020</h1>
+    </header>
+    <?php
+        require_once '../controller/edittransaction.php';
+    ?>
+    
+    <footer>
+        <p>Victor Carvalho &copy; <strong>2020</strong></p>
+    </footer>
 </body>
 </html>

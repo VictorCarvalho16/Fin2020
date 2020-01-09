@@ -19,6 +19,11 @@
     </header>
     <div id="home">
         <?php require_once '../controller/user.php'; ?>
+        <form action="/controller/filter.php" id='filter-form'>
+            Start: <input type="date" name="start-date" id="start-date">
+            End: <input type="date" name="end-date" id="end-date">
+            <button type="submit" id='filter'>Filter</button>
+        </form>
         <table>
             <tr>
                 <th>Description</th>

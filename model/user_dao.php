@@ -25,7 +25,13 @@ class UserDao {
     // Verifica os Dados de login e redireciona para a pagina certa
     public function login($user_name, $password) {
         $sql = "SELECT id, password From user WHERE user_name ='$user_name'";
-        $stmt = Connection::getConn()->query($sql);
+        try {
+            $stmt = Connection::getConn()->query($sql);
+        } catch (PDOException $e) {
+            $_SESSION['message'] =  'Acess Error';
+            header("location: ../");
+        }
+        
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         /* define o limitador de cache para 'private' */
         session_cache_limiter('private');

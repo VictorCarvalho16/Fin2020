@@ -19,30 +19,35 @@ $transaction = new Transaction(
     $id
 );
 echo '
+    <div id="content">
     <form action="http://localhost:8000/controller/updatetransaction.php" method="post">
-    <label>Description: <input type="text" name="description" id="description" placeholder="Grocery Shopping" value="'.$transaction->getDescription().'"></label>
+    <div class="input"><label><p>Description: </p><input type="text" name="description" id="description" placeholder="Grocery Shopping" value="'.$transaction->getDescription().'"></label></div>
     ';
 if($type == 'recipe'){
     echo '
-        <p>Type: 
-        <input type="radio" name="type" value="expense">Expense 
-        <input type="radio" name="type" value="recipe" checked>Recipe
-        </p>
+        <div class="radio">
+            Type: 
+            <input type="radio" name="type" value="expense">Expense 
+            <input type="radio" name="type" value="recipe" checked>Recipe
+        </div>
         ';
 }else {
     echo '
-        <p>Type: 
-        <input type="radio" name="type" value="expense" checked>Expense 
-        <input type="radio" name="type" value="recipe">Recipe
-        </p>
+        <div class="radio">
+            Type: 
+            <input type="radio" name="type" value="expense" checked>Expense 
+            <input type="radio" name="type" value="recipe">Recipe   
+        </div>
         ';
 }
 echo'
-    <label>price: $<input type="number" name="price" id="price" placeholder="100.00" step="0.01" value="'.$price.'"></label>
-    <label>Classification: <input type="search" name="classification" id="classification" placeholder="Market" value="'.$classification.'"></label>
-    <label>Date: <input type="date" name="date" id="date" value='.$date.'></label>
+    <div class="input"><label><p>Value: $</p><input type="number" name="price" id="price" placeholder="100.00" step="0.01" value="'.$price.'"></label></div>
+    <div class="input"><label><p>Classification: </p><input type="search" name="classification" id="classification" placeholder="Market" value="'.$classification.'"></label></div>
+    <div class="input"><label><p>Date: </p><input type="date" name="date" id="date" value='.$date.'></label></div>
     <button type="submit">Edit</button>
+    <a href="../home.php">Back</a>
     </form>    
+    </div>
     ';
 session_start();
 $_SESSION['id_transaction'] = $id;

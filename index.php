@@ -19,8 +19,10 @@
         <form action="controller/login.php" method="POST" id="login-form">
             <div class="input index"><label><p>User:</p><input type="text" name="user" id="user" autofocus></label></div>
             <div class="input index"><label><p>Password:</p><input type="password" name="password" id="password"></label></div>
-            <button type="submit">LogIn</button>
-            <a href="/view/signup.php">SignUp</a>
+            <div class="buttons">
+                <button type="submit">LogIn</button>
+                <a href="/view/signup.php">SignUp</a>
+            </div>
         </form>
     </div>
     <footer>
