@@ -36,7 +36,8 @@ header img{
     text-align: center;
 }
 div .index{
-    min-width: 250px;
+    max-width: 350px;
+    min-width: 150px;
 }
 div#home {
     text-align: center;
@@ -94,6 +95,10 @@ a {
     margin-left: 10px;
     color: black;
     text-decoration: none;
+    text-align: inherit;
+}
+a.icon {
+    margin-left: 0;
 }
 a:hover {
     color: rgb(32, 32, 182);
@@ -113,4 +118,10 @@ p.red {
 }
 p.green {
     color: green;
+}
+img.icon {
+    height: 20px;
+}
+img.icon:hover {
+    filter: opacity(25%);
 }

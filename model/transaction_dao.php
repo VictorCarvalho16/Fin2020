@@ -26,7 +26,7 @@ class TransactionDao {
     }
 
     public function readList($id_user) {
-        $sql = "SELECT id, description, type, price, classification, date  FROM ee2AvKRmqU.transaction WHERE id_user = ?";
+        $sql = "SELECT id, description, type, price, classification, date  FROM ee2AvKRmqU.transaction WHERE id_user = ? ORDER BY date";
 
         $stmt = Connection::getConn()->prepare($sql);
         $stmt->bindValue(1, $id_user);
@@ -43,7 +43,7 @@ class TransactionDao {
     }
 
     public function readListFilter($id_user, $start_date, $end_date) {
-        $sql = "SELECT id, description, type, price, classification, date  FROM ee2AvKRmqU.transaction WHERE id_user = ? AND date >= ? AND date <= ?";
+        $sql = "SELECT id, description, type, price, classification, date  FROM ee2AvKRmqU.transaction WHERE id_user = ? AND date >= ? AND date <= ? ORDER BY date";
 
         $stmt = Connection::getConn()->prepare($sql);
         $stmt->bindValue(1, $id_user);
