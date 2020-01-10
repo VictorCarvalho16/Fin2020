@@ -29,7 +29,7 @@ if(!empty($_SESSION['filter'])) {
         }
         foreach ($transation as $key=>$data) {
             if($key != 'id'){
-                echo "<td>$data</td>";
+                echo "<td>".ucfirst($data)."</td>";
             }
         }
         $id = $transation['id'];
@@ -44,7 +44,7 @@ if(!empty($_SESSION['filter'])) {
         echo "<tr>";
         foreach ($transation as $key=>$data) {
             if($key != 'id'){
-                echo "<td>$data</td>";
+                echo "<td>".ucfirst($data)."</td>";
             }
         }
         $id = $transation['id'];
