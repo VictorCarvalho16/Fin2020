@@ -67,7 +67,6 @@ class TransactionDao {
         $stmt = Connection::getConn()->prepare($sql);
         $stmt->bindValue(1, $id);
 
-        $stmt->execute();
         
         try{
             $stmt->execute();

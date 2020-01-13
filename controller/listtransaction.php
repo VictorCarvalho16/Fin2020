@@ -37,6 +37,7 @@ if(!empty($_SESSION['filter'])) {
         echo "<td><a class='icon' href='..\controller\deletetransaction.php\?id=$id'><img class='icon' src='../src/delete.png'></a></td>";
         echo "</tr>";    
     }
+    $_SESSION['filter'] = '';
 } else {
     $transations = $transations->readList($_SESSION['id']);
     foreach ($transations as $transation) {
